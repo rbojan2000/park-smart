@@ -24,6 +24,8 @@ def haversine_distance(lat1, lon1, lat2, lon2):
 def default_value():
     return [0, 0, 0, 0]
 
+# semaphore_id{L, R, T, B}
+
 camera_adj = defaultdict(default_value)
 
 with open('/home/petarm/Documents/nsmart-hack/stream/street-cars-radar/state_stores/geo_data.json') as f:
