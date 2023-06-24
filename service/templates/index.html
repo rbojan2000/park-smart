@@ -220,6 +220,7 @@
         13
       );
 
+      
       features.forEach((element) => {
         L.marker(element.geometry.coordinates.reverse())
           .addTo(map)
@@ -227,6 +228,7 @@
           .openPopup();
         console.log("test");
       });
+
       // Add the tile layer (OpenStreetMap)
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 18,
@@ -238,6 +240,13 @@
         .bindPopup("<b>Welcome to Novi Sad!</b><br>Enjoy your stay.")
         .openPopup();
 
+      // Highlight road
+      let polyline_options = {
+        color: '#1E90FF'
+      };
+      L.polyline([[45.23571669979091, 19.8341797018183], [45.23873129645955, 19.832464300463585]], polyline_options).addTo(map);
+
+
       // Search button click event
       var searchButton = document.getElementById("search-button");
       searchButton.addEventListener("click", function () {
@@ -245,6 +254,8 @@
         // Perform your search logic here
         console.log("Search query:", searchInput);
       });
+
+
     </script>
   </body>
 </html>
