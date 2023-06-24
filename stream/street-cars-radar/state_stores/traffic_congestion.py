@@ -9,10 +9,6 @@ from .geo import cong_mat # L R T B
 # 2. koja kamera mi je desno od 5 -> 6 :: con_mat[5][6] += 1
 
 
-def init_traffic_congestion_matrix():
-    matrix = [[0] * 8 for _ in range(8)]
-    return matrix
-
 
 def calculate_traffix_congestion(current_node, previous_node, next_node, traffic_jam_mat):
     traffic_jam_mat[previous_node][current_node] = traffic_jam_mat[previous_node][current_node] - 1

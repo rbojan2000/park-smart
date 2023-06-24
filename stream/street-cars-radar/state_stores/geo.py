@@ -1,8 +1,26 @@
 from collections import defaultdict
 import numpy as np
 import json
+import math
 
-# camera_adj, cong_mat
+def haversine_distance(lat1, lon1, lat2, lon2):
+    lat1_rad = math.radians(lat1)
+    lon1_rad = math.radians(lon1)
+    lat2_rad = math.radians(lat2)
+    lon2_rad = math.radians(lon2)
+    
+    dlon = lon2_rad - lon1_rad
+    dlat = lat2_rad - lat1_rad
+    a = math.sin(dlat/2)**2 + math.cos(lat1_rad) * math.cos(lat2_rad) * math.sin(dlon/2)**2
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
+    
+    radius = 6371
+    
+    distance = radius * c
+    
+    return distance
+
+
 def default_value():
     return [0, 0, 0, 0]
 
@@ -29,3 +47,9 @@ def get_previous_and_next_node(semaphore_id, from_direction, next_direction) :
     next_semaphore_id = adjacency_list[directions[next_direction]]
 
     return previous_semaphore_id, next_semaphore_id
+
+def calculate_traffix_congestion(current_node, previous_node, next_node):
+ if cong_mat[previous_node][current_node] > 0:
+        cong_mat[previous_node][current_node] -= 1
+
+ cong_mat[current_node][next_node] += 1
