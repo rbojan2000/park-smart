@@ -247,15 +247,14 @@
       let parking_info = {
         ratings: [5, 3, 4, 5, 5],
         free_duration: "15min",
-        reviews: ["Nice!", "So good parking", "Very nice parking, cameras and stuff wow"]
       };
 
 
       features.forEach((element) => {
         L.marker(element.geometry.coordinates.reverse())
           .addTo(map)
-          .bindPopup("Rating: " + parking_info.ratings.reduce((a, b) => a + b, 0) / parking_info.ratings.length + "<br>" +
-          "Free duration: " + parking_info.free_duration + "<br>" + "Reviews: " + "<br>" + parking_info.reviews)
+          .bindPopup("<b>Rating: " + parking_info.ratings.reduce((a, b) => a + b, 0) / parking_info.ratings.length + "<br>" +
+          "Free duration: " + parking_info.free_duration + "<b><br>")
           .openPopup();
         console.log("test");
       });
@@ -285,12 +284,12 @@
       ).addTo(map);
 
       // Search button click event
-      // var searchButton = document.getElementById("search-button");
-      // searchButton.addEventListener("click", function () {
-      //   var searchInput = document.getElementById("search-input").value;
-      //   // Perform your search logic here
-      //   console.log("Search query:", searchInput);
-      // });
+      var searchButton = document.getElementById("search-button");
+      searchButton.addEventListener("click", function () {
+        var searchInput = document.getElementById("search-input").value;
+        // Perform your search logic here
+        console.log("Search query:", searchInput);
+      });
 
       var profileButton = document.getElementById("profile-button");
       // Add click event listener to the profile button
