@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Novi Sad Map</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css"
+    />
+    <head>
+      <link rel="stylesheet" href="css/index.css" />
+    </head>
+  </head>
+  <body>
+    <div id="search-bar">
+      <input type="text" id="search-input" placeholder="Search..." />
+      <button id="search-button">Go</button>
+    </div>
+    <div id="map"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <script>
+      // Create the map
+      var map = L.map("map").setView([45.2671, 19.8335], 13);
+
+      // Add the tile layer (OpenStreetMap)
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution:
+          'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+        maxZoom: 18,
+      }).addTo(map);
+
+      // Add a marker at Novi Sad
+      L.marker([45.2671, 19.8335])
+        .addTo(map)
+        .bindPopup("<b>Welcome to Novi Sad!</b><br>Enjoy your stay.")
+        .openPopup();
+
+      // Search button click event
+      var searchButton = document.getElementById("search-button");
+      searchButton.addEventListener("click", function () {
+        var searchInput = document.getElementById("search-input").value;
+        // Perform your search logic here
+        console.log("Search query:", searchInput);
+      });
+    </script>
+  </body>
+</html>
