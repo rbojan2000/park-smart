@@ -2,7 +2,7 @@ from producer.producer import produce_message
 from state_stores.geo import get_previous_and_next_node, calculate_traffix_congestion
 from utils.traffic_message_parser import parse_trafic_input_stream
 
-# L R T 
+# L R
 
 while True:
     message = produce_message()
