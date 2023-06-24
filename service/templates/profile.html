@@ -12,7 +12,7 @@
     />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
 
     <style>
@@ -45,8 +45,9 @@
         height: 100%;
       }
 
-      .card {
-        width: 600px;
+      .profile-card {
+        width: 90%;
+        max-width: 600px;
         background-color: rgba(255, 255, 255, 0.8);
         border-radius: 4px;
         padding: 20px;
@@ -55,52 +56,111 @@
         margin-bottom: 20px;
       }
 
-      .title {
-        font-size: 24px;
-        font-weight: bold;
-        margin-bottom: 20px;
-      }
-
-      .parking-lots {
+      .profile-header {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        opacity: 0.8;
+        align-items: center;
+        margin-bottom: 20px;
       }
 
-      .parking-lot {
-        flex-basis: calc(50% - 20px);
-        height: 200px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        margin-bottom: 20px;
-        padding: 10px;
-        box-sizing: border-box;
+      .profile-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #ccc;
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: white;
+      }
+
+      .profile-info {
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .profile-tabs {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        background-color: white;
+        margin-bottom: 10px;
       }
 
-      .parking-lot h3 {
-        margin: 0;
+      .profile-tab {
+        position: relative;
+        padding: 10px 20px;
+        border-radius: 4px;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 10px;
+        transition: background-color 0.3s ease;
+        font-size: 16px;
+        background-color: #f1f1f1;
+        color: #333;
+        border: 1px solid #ccc;
       }
 
-      .parking-lot p {
-        margin: 10px 0;
-      }
-
-      .rent-button {
+      .profile-tab.active {
         background-color: #1e90ff;
         color: white;
-        border: none;
-        padding: 8px 16px;
-        border-radius: 4px;
-        cursor: pointer;
       }
 
-      .rent-button:hover {
-        background-color: #0077dd;
+      .profile-tab:before {
+        content: "";
+        position: absolute;
+        bottom: -6px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 6px solid #f1f1f1;
+      }
+
+      .profile-tab.active:before {
+        border-top-color: #1e90ff;
+      }
+
+      .profile-content {
+        display: none;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 4px;
+        border: 1px solid #ccc;
+      }
+
+      .profile-content.active {
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 20px;
+      }
+
+      .parking-spot-card {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .parking-spot-icon {
+        font-size: 24px;
+        color: #b0020e;
+        margin-right: 10px;
+      }
+
+      .plan-card {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .plan-icon {
+        font-size: 24px;
+        color: #978501;
+        margin-right: 10px;
+      }
+      .plan-icon-clock {
+        font-size: 24px;
+        color: #000000;
+        margin-right: 10px;
       }
     </style>
   </head>
@@ -108,32 +168,54 @@
     <div id="map"></div>
 
     <div class="container">
-      <div class="card">
-        <h1 class="title">Parking Lots</h1>
+      <div class="profile-card">
+        <div class="profile-header">
+          <div class="profile-avatar">
+            <i class="fas fa-user"></i>
+          </div>
+          <div class="profile-info">Zdravo Petre!</div>
+        </div>
 
-        <div class="parking-lots">
-          <div class="parking-lot">
-            <h3>Parking Lot 1</h3>
-            <p>Location: Novi Sad</p>
-            <p>Street: Example Street</p>
-            <p>Price: $10/hour</p>
-            <button class="rent-button">Rent</button>
+        <div class="profile-tabs">
+          <div class="profile-tab active" data-tab="parking-spots">
+            Vaša parkirališta
+          </div>
+          <div class="profile-content active" id="parking-spots">
+            <div class="parking-spot-card">
+              <i class="fas fa-map-marker-alt parking-spot-icon"></i>
+              <p>Parking Spot 1: Novi Sad, Example Street</p>
+            </div>
+            <div class="parking-spot-card">
+              <i class="fas fa-map-marker-alt parking-spot-icon"></i>
+              <p>Parking Spot 2: Belgrade, Another Street</p>
+            </div>
+            <div class="parking-spot-card">
+              <i class="fas fa-map-marker-alt parking-spot-icon"></i>
+              <p>Parking Spot 3: Subotica, Some Street</p>
+            </div>
           </div>
 
-          <div class="parking-lot">
-            <h3>Parking Lot 2</h3>
-            <p>Location: Belgrade</p>
-            <p>Street: Another Street</p>
-            <p>Price: $8/hour</p>
-            <button class="rent-button">Rent</button>
+          <div class="profile-tab" data-tab="premium-plan">Vaš plan</div>
+          <div class="profile-content" id="premium-plan">
+            <div class="plan-card">
+              <i class="fas fa-crown plan-icon"></i>
+              <p>Trenutno koristite Premium Plan.</p>
+            </div>
+            <div class="plan-card">
+              <i class="far fa-clock plan-icon-clock"></i>
+              <p>Plan traje do 31. decembra 2023.</p>
+            </div>
+            <p>
+              Uživajte u ekskluzivnim pogodnostima i popustima na cene
+              parkiranja.
+            </p>
           </div>
 
-          <div class="parking-lot">
-            <h3>Parking Lot 3</h3>
-            <p>Location: Subotica</p>
-            <p>Street: Some Street</p>
-            <p>Price: $12/hour</p>
-            <button class="rent-button">Rent</button>
+          <div class="profile-tab" data-tab="current-reservations">
+            Vaše rezervacije
+          </div>
+          <div class="profile-content" id="current-reservations">
+            <p>Trenutno nemate aktivnih rezervacija.</p>
           </div>
         </div>
       </div>
@@ -151,6 +233,27 @@
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 18,
       }).addTo(map);
+
+      // Handle profile tab switching
+      var tabs = document.querySelectorAll(".profile-tab");
+      var content = document.querySelectorAll(".profile-content");
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener("click", function () {
+          var activeTab = this.dataset.tab;
+
+          tabs.forEach(function (tab) {
+            tab.classList.remove("active");
+          });
+
+          content.forEach(function (content) {
+            content.classList.remove("active");
+          });
+
+          this.classList.add("active");
+          document.getElementById(activeTab).classList.add("active");
+        });
+      });
     </script>
   </body>
 </html>
