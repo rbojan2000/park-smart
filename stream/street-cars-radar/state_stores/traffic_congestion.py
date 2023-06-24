@@ -1,4 +1,4 @@
-from geo import camera_adj, cong_mat # L R T B
+from .geo import cong_mat # L R T B
 
 # L R T B
 # koja kamera mi je levo od 5 => camera_adj[5]['L']... neki broj
@@ -14,8 +14,6 @@ def init_traffic_congestion_matrix():
     return matrix
 
 
-def calculate_traffix_congestion(current_node, previous_node, next_node):
-    cong_mat[previous_node][current_node] = cong_mat[previous_node][current_node] - 1
-    cong_mat[current_node][next_node] = cong_mat[previous_node][current_node] + 1    
-
-print(camera_adj)
+def calculate_traffix_congestion(current_node, previous_node, next_node, traffic_jam_mat):
+    traffic_jam_mat[previous_node][current_node] = traffic_jam_mat[previous_node][current_node] - 1
+    traffic_jam_mat[current_node][next_node] = traffic_jam_mat[previous_node][current_node] + 1    

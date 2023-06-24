@@ -5,12 +5,13 @@
       "type": "Feature",
       "properties": {
         "cid": 1,
-        "adj (L R T B)": "n 2 n 4"
+        "adj (L R T B)": "10 2 n 4"
       },
       "geometry": {
         "coordinates": [19.836595218147664, 45.24259758530704],
         "type": "Point"
-      }
+      },
+      "id": 0
     },
     {
       "type": "Feature",
@@ -21,7 +22,8 @@
       "geometry": {
         "coordinates": [19.84146644958932, 45.24386973938951],
         "type": "Point"
-      }
+      },
+      "id": 1
     },
     {
       "type": "Feature",
@@ -32,18 +34,20 @@
       "geometry": {
         "coordinates": [19.847099364697954, 45.245241638493155],
         "type": "Point"
-      }
+      },
+      "id": 2
     },
     {
       "type": "Feature",
       "properties": {
         "cid": 4,
-        "adj (L R T B)": "n 5 1 7"
+        "adj (L R T B)": "11 5 1 7"
       },
       "geometry": {
         "coordinates": [19.83793835995627, 45.24025420644588],
         "type": "Point"
-      }
+      },
+      "id": 3
     },
     {
       "type": "Feature",
@@ -54,7 +58,8 @@
       "geometry": {
         "coordinates": [19.842721023552684, 45.241663610045435],
         "type": "Point"
-      }
+      },
+      "id": 4
     },
     {
       "type": "Feature",
@@ -71,7 +76,7 @@
       "type": "Feature",
       "properties": {
         "cid": 7,
-        "adj (L R T B)": "n 8 4 n"
+        "adj (L R T B)": "12 8 4 n"
       },
       "geometry": {
         "coordinates": [19.83970971684289, 45.23722324664422],
@@ -97,6 +102,39 @@
       },
       "geometry": {
         "coordinates": [19.8481236620606, 45.23918153956885],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cid": 10,
+        "adj (L R T B)": "n 1 n 11"
+      },
+      "geometry": {
+        "coordinates": [19.831032313246226, 45.24138863057564],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cid": 11,
+        "adj (L R T B)": "n 4 10 12"
+      },
+      "geometry": {
+        "coordinates": [19.832464300463585, 45.23873129645955],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cid": 12,
+        "adj (L R T B)": "n 7 11 n"
+      },
+      "geometry": {
+        "coordinates": [19.8341797018183, 45.23571669979091],
         "type": "Point"
       }
     }
