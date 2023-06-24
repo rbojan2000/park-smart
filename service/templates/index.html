@@ -15,6 +15,11 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
 
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
     <head>
       <!-- <link rel="stylesheet" href="css/index.css" /> -->
       <style>
@@ -51,6 +56,25 @@
         textarea:focus,
         button:focus {
           outline: none;
+        }
+        .profile-button {
+          position: absolute;
+          bottom: 20px;
+          right: 20px;
+          background-color: #1e90ff;
+          color: white;
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          z-index: 1000;
+        }
+
+        .profile-button i {
+          font-size: 20px;
         }
       </style>
     </head>
@@ -220,11 +244,18 @@
         13
       );
 
-      
+      let parking_info = {
+        ratings: [5, 3, 4, 5, 5],
+        free_duration: "15min",
+        reviews: ["Nice!", "So good parking", "Very nice parking, cameras and stuff wow"]
+      };
+
+
       features.forEach((element) => {
         L.marker(element.geometry.coordinates.reverse())
           .addTo(map)
-          .bindPopup("PARKING")
+          .bindPopup("Rating: " + parking_info.ratings.reduce((a, b) => a + b, 0) / parking_info.ratings.length + "<br>" +
+          "Free duration: " + parking_info.free_duration + "<br>" + "Reviews: " + "<br>" + parking_info.reviews)
           .openPopup();
         console.log("test");
       });
@@ -234,6 +265,7 @@
         maxZoom: 18,
       }).addTo(map);
 
+
       // Add a marker at Novi Sad
       L.marker([45.2671, 19.8335])
         .addTo(map)
@@ -242,20 +274,44 @@
 
       // Highlight road
       let polyline_options = {
-        color: '#1E90FF'
+        color: "#1E90FF",
       };
-      L.polyline([[45.23571669979091, 19.8341797018183], [45.23873129645955, 19.832464300463585]], polyline_options).addTo(map);
-
+      L.polyline(
+        [
+          [45.23571669979091, 19.8341797018183],
+          [45.23873129645955, 19.832464300463585],
+        ],
+        polyline_options
+      ).addTo(map);
 
       // Search button click event
-      var searchButton = document.getElementById("search-button");
-      searchButton.addEventListener("click", function () {
-        var searchInput = document.getElementById("search-input").value;
-        // Perform your search logic here
-        console.log("Search query:", searchInput);
+      // var searchButton = document.getElementById("search-button");
+      // searchButton.addEventListener("click", function () {
+      //   var searchInput = document.getElementById("search-input").value;
+      //   // Perform your search logic here
+      //   console.log("Search query:", searchInput);
+      // });
+
+      var profileButton = document.getElementById("profile-button");
+      // Add click event listener to the profile button
+      profileButton.addEventListener("click", function () {
+        // Redirect to the desired route or perform any action you want
+        
+        window.alert('ss')
+        console.log('ss')
+        window.location = "/templates/profile.html";
       });
+    </script>
+    <div class="profile-button" id="profile-button">
+      <i class="fa fa-user"></i>
+    </div>
+    <script>
+      var profileButton = document.getElementById("profile-button");
+      // Add click event listener to the profile button
+      profileButton.addEventListener("click", function () {
 
-
+        window.location = "/templates/profile.html";
+      });
     </script>
   </body>
 </html>
