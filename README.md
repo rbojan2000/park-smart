@@ -25,7 +25,6 @@ Overall, the application integrates map data, graph algorithms, image processing
 
 ![Parking Slot Detection GIF](https://github.com/rbojan2000/park-smart/blob/main/parking_slot_detection/detection_poc.gif)
 <figure>
-  <img src="docs/arch.png" alt="accommodation-booking-webapp system architecture" style="width:100%">
   <figcaption align = "center"><i>Gif: Example of parking slot detection</i></figcaption>
 </figure>
 
