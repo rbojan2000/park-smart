@@ -24,4 +24,9 @@ Graph Processing: This component utilizes graph algorithms to calculate the opti
 Overall, the application integrates map data, graph algorithms, image processing techniques, and real-time monitoring to provide users with the most efficient and least congested routes as well as information about parking availability.
 
 ![Parking Slot Detection GIF](https://github.com/rbojan2000/park-smart/blob/main/parking_slot_detection/detection_poc.gif)
+<figure>
+  <img src="docs/arch.png" alt="accommodation-booking-webapp system architecture" style="width:100%">
+  <figcaption align = "center"><i>Gif: Example of parking slot detection</i></figcaption>
+</figure>
+
 
