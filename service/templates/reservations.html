@@ -46,7 +46,7 @@
           <i class="fa fa-cloud" aria-hidden="true"></i>Zagađenje
         </div>
       </a>
-      <a href="/service/templates/index.html" class="link-active">
+      <a href="/service/templates/index.html">
         <div class="column">
           <i class="fa fa-map" aria-hidden="true"></i>Mapa
         </div>
@@ -62,5 +62,13 @@
         </div>
       </a>
     </div>
+
+    <script>
+      var profileButton = document.getElementById("profile-button");
+      // Add click event listener to the profile button
+      profileButton.addEventListener("click", function () {
+        window.location = "/service/templates/profile.html";
+      });
+    </script>
   </body>
 </html>
