@@ -22,3 +22,6 @@ Graph Processing: This component utilizes graph algorithms to calculate the opti
  * Image Processing: It processes the images captured by the cameras at each intersection to count the number of cars approaching and leaving the intersection.
  * Parking Monitoring: This component is responsible for monitoring parking areas using cameras. It counts the number of empty parking spaces and provides real-time information to the users regarding the availability of parking spots.
 Overall, the application integrates map data, graph algorithms, image processing techniques, and real-time monitoring to provide users with the most efficient and least congested routes as well as information about parking availability.
+
+![Parking Slot Detection GIF](https://github.com/rbojan2000/park-smart/blob/main/parking_slot_detection/detection_poc.gif)
+
