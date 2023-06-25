@@ -143,8 +143,49 @@ let features = [
   },
 ];
 
+var data = [
+  {
+    lat: 45.238672,
+    lng: 19.832145,
+    value: 0.9,
+  },
+  {
+    lat: 45.241594,
+    lng: 19.842548,
+    value: 0.8,
+  },
+  {
+    lat: 45.239961,
+    lng: 19.836702,
+    value: 0.1,
+  },
+];
+
+let cfg = {
+  radius: 100,
+  useLocalExtrema: true,
+  valueField: "value",
+  gradient: {
+    0.0: "green",
+    0.5: "yellow",
+    1.0: "red",
+  },
+  max: 1.0,
+  maxOpacity: 0.2,
+  //blur: 20, // Set the blur radius
+};
+let heatmapLayer = new HeatmapOverlay(cfg);
+heatmapLayer.setData({
+  min: 0.0,
+  max: 1.0,
+  data: data,
+});
+// Add the heatmap layer to the map
+
 // Create the map
 var map = L.map("map", { zoomControl: false }).setView([45.2671, 19.8335], 13);
+
+heatmapLayer.addTo(map);
 
 let parking_info = {
   ratings: [5, 3, 4, 5, 5],
@@ -196,4 +237,14 @@ searchButton.addEventListener("click", function () {
   var searchInput = document.getElementById("search-input").value;
   // Perform your search logic here
   console.log("Search query:", searchInput);
+});
+
+var profileButton = document.getElementById("profile-button");
+// Add click event listener to the profile button
+profileButton.addEventListener("click", function () {
+  // Redirect to the desired route or perform any action you want
+
+  window.alert("ss");
+  console.log("ss");
+  window.location = "/templates/profile.html";
 });

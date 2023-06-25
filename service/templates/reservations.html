@@ -63,12 +63,27 @@
       </a>
     </div>
 
-    <script>
-      var profileButton = document.getElementById("profile-button");
-      // Add click event listener to the profile button
-      profileButton.addEventListener("click", function () {
-        window.location = "/service/templates/profile.html";
-      });
-    </script>
+    <div id="navbar" class="row">
+      <a href="/service/templates/pollution.html">
+        <div class="column">
+          <i class="fa fa-cloud" aria-hidden="true"></i>Zagađenje
+        </div>
+      </a>
+      <a href="/service/templates/index.html" class="link-active">
+        <div class="column">
+          <i class="fa fa-map" aria-hidden="true"></i>Mapa
+        </div>
+      </a>
+      <a href="/service/templates/reservations.html">
+        <div class="column">
+          <i class="fa fa-envelope-open" aria-hidden="true"></i>Rezervacije
+        </div>
+      </a>
+      <a href="/service/templates/profile.html">
+        <div class="column">
+          <i class="fa fa-user" aria-hidden="true"></i>User
+        </div>
+      </a>
+    </div>
   </body>
 </html>

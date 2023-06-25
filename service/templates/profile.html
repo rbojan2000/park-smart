@@ -14,7 +14,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
-
+    <link rel="stylesheet" href="/service/templates/css/index.css" />
     <style>
       html,
       body {
@@ -126,6 +126,8 @@
         background-color: rgba(255, 255, 255, 0.8);
         border-radius: 4px;
         border: 1px solid #ccc;
+        overflow: auto;
+        max-height: 200px; /* Dodatak: Dodajemo ograničenje visine sadržaja */
       }
 
       .profile-content.active {
@@ -134,7 +136,8 @@
         margin-bottom: 20px;
       }
 
-      .parking-spot-card {
+      .parking-spot-card,
+      .plan-card {
         display: flex;
         align-items: center;
         margin-bottom: 10px;
@@ -146,21 +149,18 @@
         margin-right: 10px;
       }
 
-      .plan-card {
-        display: flex;
-        align-items: center;
-        margin-bottom: 10px;
+      .plan-icon,
+      .plan-icon-clock {
+        font-size: 24px;
+        margin-right: 10px;
       }
 
       .plan-icon {
-        font-size: 24px;
         color: #978501;
-        margin-right: 10px;
       }
+
       .plan-icon-clock {
-        font-size: 24px;
         color: #000000;
-        margin-right: 10px;
       }
     </style>
   </head>
@@ -205,20 +205,50 @@
               <i class="far fa-clock plan-icon-clock"></i>
               <p>Plan traje do 31. decembra 2023.</p>
             </div>
-            <p>
-              Uživajte u ekskluzivnim pogodnostima i popustima na cene
-              parkiranja.
-            </p>
+            <br />
+            <br />
           </div>
 
           <div class="profile-tab" data-tab="current-reservations">
             Vaše rezervacije
           </div>
           <div class="profile-content" id="current-reservations">
-            <p>Trenutno nemate aktivnih rezervacija.</p>
+            <div class="plan-card">
+              <i class="fa-solid fa-square-parking-slash"></i>
+              <br />
+            </div>
+            <div class="plan-card">
+              <i class="fa-solid fa-square-parking-slash"></i>
+              <p>Trenutno nemate rezervacija.</p>
+            </div>
+            <br />
+            <br />
+            <br />
           </div>
         </div>
       </div>
+    </div>
+    <div id="navbar" class="row">
+      <a href="/service/templates/pollution.html">
+        <div class="column">
+          <i class="fa fa-cloud" aria-hidden="true"></i>Zagađenje
+        </div>
+      </a>
+      <a href="/service/templates/index.html" class="link-active">
+        <div class="column">
+          <i class="fa fa-map" aria-hidden="true"></i>Mapa
+        </div>
+      </a>
+      <a href="/service/templates/reservations.html">
+        <div class="column">
+          <i class="fa fa-envelope-open" aria-hidden="true"></i>Rezervacije
+        </div>
+      </a>
+      <a href="/service/templates/profile.html">
+        <div class="column">
+          <i class="fa fa-user" aria-hidden="true"></i>User
+        </div>
+      </a>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
@@ -254,6 +284,16 @@
           document.getElementById(activeTab).classList.add("active");
         });
       });
+
+      // Resize content-active elements on tab switch
+      function resizeContentActive() {
+        var activeContent = document.querySelector(".profile-content.active");
+        var profileCard = document.querySelector(".profile-card");
+        activeContent.style.height = profileCard.clientHeight - 80 + "px";
+      }
+
+      window.addEventListener("resize", resizeContentActive);
+      resizeContentActive();
     </script>
   </body>
 </html>

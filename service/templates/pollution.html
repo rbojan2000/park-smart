@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Novi Sad Map</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/heatmapjs@2.0.2/heatmap.js"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/leaflet-heatmap@1.0.0/leaflet-heatmap.js"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/leaflet.heat/dist/leaflet-heat.js"
+    />
+
+    <head>
+      <link rel="stylesheet" href="css/index.css" />
+    </head>
+  </head>
+  <body>
+    <div id="search-bar">
+      <i class="fa fa-search"></i>
+      <input
+        type="text"
+        class="no-highlight"
+        id="search-input"
+        placeholder="Search..."
+      />
+    </div>
+    <div id="map"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/heatmapjs@2.0.2/heatmap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-heatmap@1.0.0/leaflet-heatmap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.heat/dist/leaflet-heat.js"></script>
+
+    <script src="js/pollution.js"></script>
+
+    <div id="navbar" class="row">
+      <a href="/service/templates/pollution.html">
+        <div class="column">
+          <i class="fa fa-cloud" aria-hidden="true"></i>Zagađenje
+        </div>
+      </a>
+      <a href="/service/templates/index.html">
+        <div class="column">
+          <i class="fa fa-map" aria-hidden="true"></i>Mapa
+        </div>
+      </a>
+      <a href="/service/templates/reservations.html">
+        <div class="column">
+          <i class="fa fa-envelope-open-o" aria-hidden="true"></i>Rezervacije
+        </div>
+      </a>
+      <a href="/service/templates/profile.html">
+        <div class="column">
+          <i class="fa fa-user" aria-hidden="true"></i>User
+        </div>
+      </a>
+    </div>
+
+    <script>
+      var profileButton = document.getElementById("profile-button");
+      // Add click event listener to the profile button
+      profileButton.addEventListener("click", function () {
+        window.location = "/service/templates/profile.html";
+      });
+    </script>
+  </body>
+</html>
