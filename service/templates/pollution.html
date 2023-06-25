@@ -287,7 +287,7 @@
         13
       );
 
-      heatmapLayer.addTo(map);
+      //heatmapLayer.addTo(map);
 
       function toggleHeatmap() {
         heatmapLayer.options.visible = !heatmapLayer.options.visible;
@@ -361,9 +361,13 @@
     <script>
       var profileButton = document.getElementById("profile-button");
       // Add click event listener to the profile button
-      profileButton.addEventListener("click", function () {
-
-        window.location = "/templates/profile.html";
+      profileButton.addEventListener("click", function toggleHeatmap() {
+        heatmapLayer.options.visible = !heatmapLayer.options.visible;
+        if (heatmapLayer.options.visible) {
+          heatmapLayer.addTo(map);
+        } else {
+          heatmapLayer.removeFrom(map);
+        }
       });
     </script>
   </body>
