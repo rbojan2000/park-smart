@@ -92,6 +92,9 @@
     <div id="map"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/heatmapjs@2.0.2/heatmap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-heatmap@1.0.0/leaflet-heatmap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.heat/dist/leaflet-heat.js"></script>
     <script>
       let features = [
         {
@@ -238,11 +241,62 @@
         },
       ];
 
+        var data=   [
+        {
+          "lat": 45.238672,
+          "lng": 19.832145,
+          "value": 0.9
+        },
+        {
+          "lat": 45.241594,
+          "lng": 19.842548,
+          "value": 0.9
+        },
+        {
+          "lat": 45.239961,
+          "lng": 19.836702,
+          "value": 0.1
+        }
+      ]
+      
+      let cfg = {
+        "radius": 100,
+        "useLocalExtrema": true,
+        valueField: 'value',
+        gradient: {
+            0.0: 'green',
+            0.5: 'yellow',
+            1.0: 'red'
+          },
+        max: 1.0,
+        "maxOpacity": .2,
+        visible: true
+        //blur: 20, // Set the blur radius
+      };
+
+      let heatmapLayer = new HeatmapOverlay(cfg);
+      heatmapLayer.setData({
+          min: 0.0,
+          max: 1.0,
+          data: data
+      })
+
       // Create the map
       var map = L.map("map", { zoomControl: false }).setView(
         [45.2671, 19.8335],
         13
       );
+
+      heatmapLayer.addTo(map);
+
+      function toggleHeatmap() {
+        heatmapLayer.options.visible = !heatmapLayer.options.visible;
+        if (heatmapLayer.options.visible) {
+          heatmapLayer.addTo(map);
+        } else {
+          heatmapLayer.removeFrom(map);
+        }
+      }
 
       let parking_info = {
         ratings: [5, 3, 4, 5, 5],
