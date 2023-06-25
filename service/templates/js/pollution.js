@@ -147,17 +147,37 @@ var data = [
   {
     lat: 45.238672,
     lng: 19.832145,
-    value: 0.9,
+    value: 0.7,
   },
   {
     lat: 45.241594,
     lng: 19.842548,
-    value: 0.8,
+    value: 0.5,
   },
   {
     lat: 45.239961,
     lng: 19.836702,
-    value: 0.1,
+    value: 0.6,
+  },
+  {
+    lat: 45.255965,
+    lng: 19.808412,
+    value: 0.3,
+  },
+  {
+    lat: 45.276738,
+    lng: 19.801256,
+    value: 0.7,
+  },
+  {
+    lat: 45.265748,
+    lng: 19.841586,
+    value: 0.7,
+  },
+  {
+    lat: 45.232789,
+    lng: 19.81294,
+    value: 0.4,
   },
 ];
 
@@ -171,7 +191,7 @@ let cfg = {
     1.0: "red",
   },
   max: 1.0,
-  maxOpacity: 0.2,
+  maxOpacity: 0.3,
   //blur: 20, // Set the blur radius
 };
 let heatmapLayer = new HeatmapOverlay(cfg);
@@ -192,44 +212,10 @@ let parking_info = {
   free_duration: "15min",
 };
 
-features.forEach((element) => {
-  L.marker(element.geometry.coordinates.reverse())
-    .addTo(map)
-    .bindPopup(
-      "<b>Rating: " +
-        parking_info.ratings.reduce((a, b) => a + b, 0) /
-          parking_info.ratings.length +
-        "<br>" +
-        "Free duration: " +
-        parking_info.free_duration +
-        "<b><br>"
-    )
-    .openPopup();
-  console.log("test");
-});
-
 // Add the tile layer (OpenStreetMap)
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 18,
 }).addTo(map);
-
-// Add a marker at Novi Sad
-L.marker([45.2671, 19.8335])
-  .addTo(map)
-  .bindPopup("<b>Welcome to Novi Sad!</b><br>Enjoy your stay.")
-  .openPopup();
-
-// Highlight road
-let polyline_options = {
-  color: "#1E90FF",
-};
-L.polyline(
-  [
-    [45.23571669979091, 19.8341797018183],
-    [45.23873129645955, 19.832464300463585],
-  ],
-  polyline_options
-).addTo(map);
 
 // Search button click event
 var searchButton = document.getElementById("search-button");
@@ -241,10 +227,3 @@ searchButton.addEventListener("click", function () {
 
 var profileButton = document.getElementById("profile-button");
 // Add click event listener to the profile button
-profileButton.addEventListener("click", function () {
-  // Redirect to the desired route or perform any action you want
-
-  window.alert("ss");
-  console.log("ss");
-  window.location = "/templates/profile.html";
-});
